@@ -14,6 +14,9 @@ object Versions {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
 
+    // kotlin
+    const val COROUTINES = "1.6.4"
+
     // jetpack
     const val CORE = "1.13.0"
     const val APP_COMPAT = "1.6.1"
@@ -22,6 +25,13 @@ object Versions {
 
     // google
     const val MATERIAL = "1.11.0"
+
+    // hilt
+    const val HILT = "2.51.1"
+
+    // 3rd
+    const val OKHTTP_BOM = "4.12.0"
+    const val RETROFIT = "2.9.0"
 
     // test
     const val JUNIT_TEST = "4.13.2"

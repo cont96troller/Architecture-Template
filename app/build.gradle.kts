@@ -55,6 +55,23 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}")
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}")
+
+    // hilt
+    implementation("com.google.dagger:dagger:${Versions.HILT}")
+    implementation("com.google.dagger:hilt-android:${Versions.HILT}")
+
+    // coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES}")
+
+    // okHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:${Versions.OKHTTP_BOM}"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    // retrofit
+    implementation("com.squareup.retrofit2:converter-gson:${Versions.RETROFIT}")
+    implementation("com.squareup.retrofit2:retrofit:${Versions.RETROFIT}")
+
     testImplementation("junit:junit:${Versions.JUNIT_TEST}")
     androidTestImplementation("androidx.test.ext:junit:${Versions.JUNIT}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.ESPRESSO}")
