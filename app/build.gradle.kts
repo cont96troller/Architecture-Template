@@ -1,7 +1,11 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+val localProperties = loadProperties(project.rootProject.file("local.properties"))
 
 android {
     namespace = "com.yoohyun.sample"
@@ -15,6 +19,9 @@ android {
         versionName = Versions.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val apiKey = localProperties.getProperty("weather.api.key", "")
+        buildConfigField("boolean", "WEATHER_API_KEY", apiKey)
     }
 
     buildTypes {
@@ -51,4 +58,12 @@ dependencies {
     testImplementation("junit:junit:${Versions.JUNIT_TEST}")
     androidTestImplementation("androidx.test.ext:junit:${Versions.JUNIT}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.ESPRESSO}")
+}
+
+fun loadProperties(file: File?) = Properties().apply {
+    if (file != null && file.exists()) {
+        file.inputStream().use { fis ->
+            load(fis)
+        }
+    }
 }
