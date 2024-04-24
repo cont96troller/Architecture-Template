@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.yoohyun.sample"
-    compileSdk = 34
+    compileSdk = Versions.COMPILE_SDK
 
     defaultConfig {
         applicationId = "com.yoohyun.sample"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Versions.MIN_SDK
+        targetSdk = Versions.TARGET_SDK
+        versionCode = Versions.VERSION_CODE
+        versionName = Versions.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Versions.JAVA_VERSION
+        targetCompatibility = Versions.JAVA_VERSION
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.JVM_TARGET
     }
     buildFeatures {
         viewBinding = true
