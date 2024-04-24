@@ -1,7 +1,11 @@
+import java.util.Properties
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
+
+val localProperties = loadProperties(project.rootProject.file("local.properties"))
 
 android {
     namespace = "com.yoohyun.data"
@@ -12,9 +16,13 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        val apiKey = localProperties.getProperty("weather.api.key", "")
+        buildConfigField("string", "WEATHER_API_KEY", apiKey)
     }
 
     buildTypes {
+        debug {}
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -27,6 +35,11 @@ android {
         sourceCompatibility = Versions.JAVA_VERSION
         targetCompatibility = Versions.JAVA_VERSION
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     kotlinOptions {
         jvmTarget = Versions.JVM_TARGET
     }
@@ -60,4 +73,12 @@ dependencies {
     testImplementation("junit:junit:${Versions.JUNIT_TEST}")
     androidTestImplementation("androidx.test.ext:junit:${Versions.JUNIT}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.ESPRESSO}")
+}
+
+fun loadProperties(file: File?) = Properties().apply {
+    if (file != null && file.exists()) {
+        file.inputStream().use { fis ->
+            load(fis)
+        }
+    }
 }
