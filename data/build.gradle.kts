@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 val localProperties = loadProperties(project.rootProject.file("local.properties"))
@@ -51,7 +52,7 @@ dependencies {
     implementation("androidx.core:core-ktx:${Versions.CORE}")
 
     // hilt
-    implementation("com.google.dagger:dagger:${Versions.HILT}")
+    kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
     implementation("com.google.dagger:hilt-android:${Versions.HILT}")
 
     // coroutines
