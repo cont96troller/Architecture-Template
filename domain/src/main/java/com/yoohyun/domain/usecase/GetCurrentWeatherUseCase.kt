@@ -12,9 +12,9 @@ class GetCurrentWeatherUseCase @Inject constructor(
         return weatherMapRepository.getCurrentWeather(
             parameters.lat,
             parameters.lon,
-            "api key"
+            parameters.apiKey
         )
     }
 }
 
-data class GetCurrentWeatherUseCaseParams(val lat: Double, val lon: Double)
+data class GetCurrentWeatherUseCaseParams(val lat: Double, val lon: Double, val apiKey: String)
