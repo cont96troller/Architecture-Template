@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -15,8 +17,13 @@ android {
         versionName = Versions.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
+            }
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -48,6 +55,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT_LAYOUT}")
     implementation("androidx.navigation:navigation-fragment-ktx:${Versions.NAVIGATION}")
     implementation("androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}")
+
+    // hilt
+    kapt("com.google.dagger:hilt-android-compiler:${Versions.HILT}")
+    implementation("com.google.dagger:hilt-android:${Versions.HILT}")
+
     testImplementation("junit:junit:${Versions.JUNIT_TEST}")
     androidTestImplementation("androidx.test.ext:junit:${Versions.JUNIT}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Versions.ESPRESSO}")
